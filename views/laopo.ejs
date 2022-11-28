@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>后宫名单</title>
+    <style>
+        /* table {
+            width: 600px;
+            text-align: center;
+            margin: 50px auto;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+        caption {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        tr {
+            height: 40px;
+            cursor: pointer;
+        }
+
+        table tr:nth-child(1) {
+            background-color: #ddd;
+        }
+
+        table tr:not(:first-child):hover {
+            background-color: #eee;
+        } */
+        body {
+            background-color: #ccc;
+        }
+        table {
+            margin: 50px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #000;
+            font-size: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+        caption {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        #form form {
+            margin: 20px auto;
+        }
+        a {
+            text-decoration: none;
+            color: blueviolet;
+        }
+        a:hover {
+            color: greenyellow;
+        }
+        #name {
+            display: flex;
+            justify-content: center;
+            color: darkorchid;
+        }
+        #out {
+            display: flex;
+            justify-content: end;
+        }
+    </style>
+</head>
+
+<body>
+    <%# for(const laopo of laopos){ %>
+        <%# laopo.name%>  <%# laopo.age %>  <%# laopo.sex %>  <%# laopo.voice %>  <%# laopo.angel %> 
+        <!-- <br> -->
+        <%#} 
+    %>
+    <hr>
+    <h2 id="name">当前账户：<%= username %> </h2>
+    <h2 id="out"><a href="/logout">退出</a></h2>
+    <hr>
+    <% if(laopos && laopos.length > 0) {  %> 
+    <table>
+    <caption>老婆清单</caption>
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>声优</th>
+                <th>天使</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(const laopo of laopos){ %>
+                <tr>
+                    <td> <%= laopo.id %> </td>
+                    <td> <%= laopo.name%> </td>
+                    <td> <%= laopo.age %> </td>
+                    <td> <%= laopo.sex %> </td>
+                    <td> <%= laopo.voice %> </td>
+                    <td> <%= laopo.angel %> </td>
+                    <td>
+                        <a onclick="return confirm('确认删除【<%= laopo.name%>】吗？')"
+                        href="/laopos/delete?id=<%= laopo.id %>">删除</a>
+                        <a href="/laopos/to_update?id=<%= laopo.id %>">修改</a>
+                    </td>
+                </tr>
+                <% }  %>
+        </tbody>
+    </table>
+    <% } else { %> 
+           <p>学生列表为空！</p>
+        <% } %> 
+    <hr>
+    <div id="form">
+        <form action="/laopos/add" method="post">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div>
+                姓名：<input type="text" name="name">
+            </div>
+            <div>
+                年龄：<input type="number" max="28" min="10" name="age">
+            </div><div>
+                性别：<input type="radio" name="sex" value="女" checked = "checked"> 女
+                     <input type="radio" name="sex" value="男"> 男
+            </div><div>
+                声优：<input type="text" name="voice">
+            </div><div>
+                三围：<input type="text" name="angel">
+            </div>
+            <div>
+                <button>添加</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

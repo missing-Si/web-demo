@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新信息</title>
+</head>
+
+<body>
+    <h1>修改后宫人员信息</h1>
+    <div id="form">
+        <form action="/laopos/update_laopo?id=<%= wife.id %> " method="post">
+            <div>
+                姓名：<input type="text" name="name" value="<%= wife.name %>">
+            </div>
+            <div>
+                年龄：<input type="number" max="28" min="0" name="age" value="<%= wife.age %>">
+            </div>
+            <div>
+                性别：<input type="radio" name="sex" value="女" <%= wife.sex === "女" && "checked" %> > 女
+                <input type="radio" name="sex" value="男" <%= wife.sex === "男" && "checked" %> > 男
+            </div>
+            <div>
+                声优：<input type="text" name="voice" value="<%= wife.voice %>">
+            </div>
+            <div>
+                三围：<input type="text" name="angel" value="<%= wife.angel %>">
+            </div>
+            <div>
+                <button>修改</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

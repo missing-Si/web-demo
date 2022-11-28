@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>这是ejs模板</title>
+</head>
+
+<body>
+    <h1>Hello EJS</h1>
+    <h2>
+        <%=name %>
+            <%= age %>
+                <%= sex %>
+                    <%= voice %>
+                        <%# angel %>
+    </h2>
+    <form action="/set_name" method="get">
+        <input type="text" name="name" placeholder="请输入你的名字">
+        <button>提交</button>
+    </form>
+    <% console.log("haha") %>
+</body>
+
+</html>
