@@ -1,0 +1,4 @@
+# 配置不需要被git管理的文件
+sessions
+node_modules
+yarn.lock
